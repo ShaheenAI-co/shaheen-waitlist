@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const Form = () => {
     }
 
     // Success message
-    toast.success("Successfully joined the waitlist!");
+
 
     // Reset form
     setEmail("");
