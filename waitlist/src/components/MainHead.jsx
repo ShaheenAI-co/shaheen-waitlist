@@ -3,14 +3,11 @@ import React from "react";
 const MainHead = () => {
   return (
     <>
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-        The Future of AI Driven
-        <br />
-        Business Growth
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+      Say goodbye to social media stress <br /> let <span className="italic gradText">Shaheen</span> handle it 
       </h1>
 
-      {/* Subtitle */}
-      <p className="text-white/80 text-lg md:text-xl mb-12 max-w-xl mx-auto">
+      <p className="text-white text-lg md:text-xl mb-12 max-w-xl mx-auto">
         AI that creates and schedules engaging posts for you
       </p>
     </>

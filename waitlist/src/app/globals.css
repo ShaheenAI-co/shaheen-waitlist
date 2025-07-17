@@ -24,3 +24,20 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.circleGradient{
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #200d42 34%,
+    #4f21a1 60%,
+    #A46EDB 84%
+  );
+  filter: blur(120px);
+}
+
+.gradText{
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
