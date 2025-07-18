@@ -34,7 +34,7 @@ const Form = () => {
         <div className="flex flex-col gap-2 items-start">
           <label
             htmlFor="email"
-            className="text-white flex gap-2 font-semibold md:text-base text-sm"
+            className="text-white flex gap-2 font-semibold md:text-base text-base"
           >
             Email address <span className="text-red-500">*</span>
           </label>
@@ -43,7 +43,7 @@ const Form = () => {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-white/20 border-1 outline-none md:text-base text-sm focus:border-[#A46EDB] focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 rounded-xl w-full"
+            className="bg-white/20 border-1 outline-none md:text-base text-base focus:border-[#A46EDB] focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 rounded-xl w-full"
             required
           />
         </div>
@@ -51,7 +51,7 @@ const Form = () => {
         <div className="flex flex-col gap-2 items-start">
           <label
             htmlFor=""
-            className="text-white flex gap-2 font-semibold md:text-base text-sm"
+            className="text-white flex gap-2 font-semibold md:text-base text-base"
           >
             Phone No <span className="text-red-500">*</span>
           </label>
@@ -82,7 +82,7 @@ const Form = () => {
               </option>
             </select>
             <input
-              className="bg-white/20 border-1 outline-none md:text-base text-sm  focus:border-2 border-[#898989] flex-1 text-white px-4 placeholder:text-[#C5C2C2]  h-12 phone-input w-64 rounded-l-none rounded-r-md"
+              className="bg-white/20 border-1 outline-none md:text-base text-base  focus:border-2 border-[#898989] flex-1 text-white px-4 placeholder:text-[#C5C2C2]  h-12 phone-input w-64 rounded-l-none rounded-r-md"
               type="tel"
               id="phone"
               placeholder="Enter phone number"
