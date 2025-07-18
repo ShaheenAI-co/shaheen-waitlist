@@ -60,7 +60,7 @@ const Form = () => {
               id="country-code"
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
-              className="bg-white/20 border-1 outline-none md:text-base text-sm  focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 country-code-selector rounded-l-md rounded-r-none"
+              className="bg-white/20 border-1 outline-none md:text-base text-base  focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 country-code-selector rounded-l-md rounded-r-none"
             >
               <option className="country-option" value="+966">
                 🇸🇦 +966
