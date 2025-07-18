@@ -40,9 +40,20 @@ body {
   );
   filter: blur(120px);
 }
+.circleGradientMobile {
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #200d42 34%,
+    #4f21a1 60%,
+    #a46edb 84%
+  );
+  filter: blur(50px);
+}
 
 .gradText {
   background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

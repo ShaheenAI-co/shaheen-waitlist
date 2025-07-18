@@ -7,7 +7,7 @@ import BluredCircle from "@/components/BluredCircle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 export default function Home() {
   return (
-    <div className="min-h-screen py-6 bg-black flex flex-col items-center justify-center h-screen overflow-hidden overflow-x-hidden">
+    <div className="min-h-screen pb-4 bg-black flex flex-col  justify-center h-screen overflow-hidden overflow-x-hidden">
       <BluredCircle />
       <Logo />
 
