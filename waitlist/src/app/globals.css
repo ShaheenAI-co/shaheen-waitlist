@@ -49,6 +49,7 @@ body {
 
 .satoshi-bold {
   font-family: "Satoshi-Bold", sans-serif;
+  font-weight: 700;
 }
 
 .country-code-selector {
