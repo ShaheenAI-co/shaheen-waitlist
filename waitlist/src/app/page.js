@@ -4,6 +4,7 @@ import Logo from "@/components/Logo";
 import MainHead from "@/components/MainHead";
 import FormCard from "@/components/FormCard";
 import BluredCircle from "@/components/BluredCircle";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 export default function Home() {
   return (
     <div className="min-h-screen bg-black flex flex-col justify-center overflow-hidden">
@@ -15,7 +16,7 @@ export default function Home() {
           <FormCard />
         </div>
       </main>
-      <BluredCircle/>
+      <BluredCircle />
     </div>
   );
 }

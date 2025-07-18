@@ -46,3 +46,16 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.satoshi-bold{
+  font-family: 'Satoshi-Bold', sans-serif;
+}
+
+.country-code-selector {
+  border-radius: 0.75rem 0 0 0.75rem; /* left only */
+  border-right: none;
+}
+.phone-input {
+  border-radius: 0 0.75rem 0.75rem 0; /* right only */
+  border-left: none;
+}

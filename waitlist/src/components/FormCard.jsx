@@ -9,8 +9,8 @@ const FormCard = () => {
           Join the waitlist
         </h2>
         <p className="text-white/70 text-base text-left ">
-          Get early access to AI-generated content and automated scheduling before
-          anyone else
+          Get early access to AI-generated content and automated scheduling
+          before anyone else
         </p>
       </div>
 

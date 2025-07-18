@@ -5,6 +5,7 @@ import React, { useState } from "react";
 const Form = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [countryCode, setCountryCode] = useState("+966");
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -16,15 +17,20 @@ const Form = () => {
       return;
     }
 
+    // Combine country code and phone number
+    const fullPhone = `${countryCode}${phone}`;
+    setPhone(fullPhone);
+
     // Success message
 
     // Reset form
     setEmail("");
     setPhone("");
+    setCountryCode("+966");
   };
   return (
     <form onSubmit={handleSubmit} className="space-y-4 flex flex-col gap-4">
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2 items-start">
           <label
             htmlFor="email"
@@ -43,20 +49,33 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col gap-2 items-start">
-          <label
-            htmlFor="phone"
-            className="text-white flex gap-2 font-semibold text-sm"
-          >
+          <label htmlFor="">
             Phone No <span className="text-red-500">*</span>
           </label>
-          <input
-            type="tel"
-            placeholder="+966"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="bg-white/20 border-1 text-sm outline-none focus:border-[#A46EDB] focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 rounded-xl w-full"
-            required
-          />
+          <div className="flex w-full  ">
+            <select
+              id="country-code"
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+              className="bg-white/20 border-1 outline-none text-sm  focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  h-12 country-code-selector rounded-l-md rounded-r-none"
+            >
+              <option value="+966">🇸🇦 +966</option>
+              <option value="+973">🇧🇭 +973</option>
+              <option value="+965">🇰🇼 +965</option>
+              <option value="+974">🇶🇦 +974</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+">🏳️ Other</option>
+            </select>
+            <input
+              className="bg-white/20 border-1 outline-none text-sm  focus:border-2 border-[#898989] flex-1 text-white px-4 placeholder:text-[#C5C2C2]  h-12 phone-input w-64 rounded-l-none rounded-r-md"
+              type="tel"
+              id="phone"
+              placeholder="Enter phone number"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 
@@ -66,6 +85,7 @@ const Form = () => {
       >
         Join waitlist
       </button>
+      {console.log(phone)}
     </form>
   );
 };
