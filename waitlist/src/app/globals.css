@@ -74,5 +74,6 @@ body {
 
 /* Style for country code <option> elements to ensure visibility on all OS/browsers */
 .country-option {
+  background-color: #222 !important;
   color: #fff !important;
 }

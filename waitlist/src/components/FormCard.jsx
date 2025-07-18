@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./Form";
 
+
 const FormCard = () => {
   return (
     <div className=" md:w-[586px]  w-90 bg-white/10 backdrop-blur-3xl rounded-4xl md:p-8 p-5 border border-white/20 shadow-2xl  mx-auto flex flex-col gap-5">

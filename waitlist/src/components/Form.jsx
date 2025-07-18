@@ -1,22 +1,41 @@
 "use client";
 
 import React, { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const Form = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+966");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation
-    if (!email || !phone) {
-      console.log("Please fill in all fields");
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
+    if (!phone) {
+      setError("phone is required");
       return;
     }
 
+    const { error } = await supabase
+      .from("waiting_list")
+      .insert({ email, phone });
+
+      if(error){
+        setError(error.message)
+      }
     // Combine country code and phone number
     const fullPhone = `${countryCode}${phone}`;
     setPhone(fullPhone);

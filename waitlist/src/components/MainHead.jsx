@@ -3,7 +3,7 @@ import React from "react";
 const MainHead = () => {
   return (
     <div className="   flex flex-col items-center justify-center">
-      <h1 className="text-3xl md:text-5xl lg:text-7xl satoshi-bold text-white mb-6 md:leading-tight ">
+      <h1 className="text-3xl md:text-5xl lg:text-6xl satoshi-bold text-white mb-6 md:leading-tight ">
         Say goodbye to social media stress {" "}
         <span className="max-sm:hidden">
           <br />
