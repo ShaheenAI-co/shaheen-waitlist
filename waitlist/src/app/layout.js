@@ -10,7 +10,7 @@ const inter = Inter({
 
 export const metadata = {
   title: "Shaheen Waitlist",
-  description: "",
+  description: "Your social media partner",
 };
 
 export default function RootLayout({ children }) {
