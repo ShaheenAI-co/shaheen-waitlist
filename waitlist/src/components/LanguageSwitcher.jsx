@@ -1,71 +1,58 @@
 "use client";
-import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-];
+const LanguageSwitcher = ({
+  options,
+  placeholder = "Lang",
+  value,
+  onChange,
+}) => {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(value || null);
+  const dropdownRef = useRef(null);
 
-export default function LanguageSwitcher() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
 
-  // Extract current locale from the pathname (assuming /en/..., /es/..., etc.)
-  const currentLocale = pathname.split("/")[1] || "en";
-  const currentLanguage = languages.find((lang) => lang.code === currentLocale);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  const changeLanguage = (locale) => {
-    setIsOpen(false);
-    const segments = pathname.split("/");
-    segments[1] = locale; // replace the locale segment
-    const newPath = segments.join("/");
-    router.push(newPath);
+  const handleSelect = (option) => {
+    setSelected(option); // Update selected item
+    setOpen(false); // Close the dropdown
+    if (onChange) onChange(option); // Notify parent component
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors"
+        onClick={() => setOpen((prev) => !prev)}
+        className="py-4 px-6 bg-blue-100"
       >
-        <span>{currentLanguage?.flag}</span>
-        <span className="text-sm font-medium">{currentLanguage?.name}</span>
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        {selected ? selected.label : placeholder}
       </button>
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 border">
-          {languages.map((language) => (
-            <button
-              key={language.code}
-              onClick={() => changeLanguage(language.code)}
-              className={`flex items-center space-x-2 w-full px-4 py-2 text-left hover:bg-gray-50 ${
-                currentLocale === language.code
-                  ? "bg-blue-50 text-blue-600"
-                  : "text-gray-700"
-              }`}
+
+      {open && (
+        <ul className="absolute z-10 w-full mt-1 bg-white border rounded-lg shadow-lg max-h-60 overflow-auto">
+          {options.map((option) => (
+            <li
+              key={option.value}
+              onClick={() => handleSelect(option)}
+              className={`px-4 py-2 cursor-pointer hover:bg-blue-100 
+          ${selected?.value === option.value ? "bg-blue-50 font-semibold" : ""}`}
             >
-              <span>{language.flag}</span>
-              <span className="text-sm">{language.name}</span>
-            </button>
+              {option.label}
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
-}
+};
+
+export default LanguageSwitcher;
