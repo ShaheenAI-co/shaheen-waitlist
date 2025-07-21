@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -78,4 +77,17 @@ body {
 .country-option {
   background-color: #222 !important;
   color: #fff !important;
+}
+
+/* Alexandria font import */
+@font-face {
+  font-family: "Alexandria";
+  src: url("/fonts/Alexandria.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.alexandria-font {
+  font-family: "Alexandria", sans-serif;
 }
