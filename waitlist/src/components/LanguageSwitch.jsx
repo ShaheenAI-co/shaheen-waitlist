@@ -25,13 +25,13 @@ const LanguageSwitch = () => {
   return (
     <div>
       <select
-        className="px-2  py-2 rounded-md "
+        className="px-1 py-2 rounded-md outline-none focus:outline-none  "
         id="lang"
         onChange={onSelectChange}
         value={currentLang}
       >
-        <option value="en">🇬🇧</option>
-        <option value="ar">🇸🇦</option>
+        <option value="en">Eng</option>
+        <option value="ar">Ar</option>
       </select>
     </div>
   );

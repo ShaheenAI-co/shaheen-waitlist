@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -25,7 +25,7 @@ const Form = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  // Handle form submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,18 +45,36 @@ const Form = () => {
 
     if (error) {
       setError(error.message);
+      setSuccess(false);
+      return;
     }
     // Combine country code and phone number
     const fullPhone = `${countryCode}${phone}`;
     setPhone(fullPhone);
 
     // Success message
+    setSuccess(true);
+    setError("");
 
     // Reset form
     setEmail("");
     setPhone("");
-    setCountryCode("+966");
+    setCountryCode(countryCode);
   };
+
+  // Reset success when user edits the form
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+    setSuccess(false);
+  };
+
+  // Hide confirmation message after 5 seconds
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => setSuccess(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 flex flex-col gap-4">
@@ -75,7 +93,7 @@ const Form = () => {
             type="email"
             placeholder={inputPlace("Email")}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInputChange(setEmail)}
             className={`bg-white/20 border-1 outline-none md:text-base text-base focus:border-[#A46EDB] focus:border-2 border-[#898989] text-white px-4 placeholder:text-[#C5C2C2]  py-2 rounded-xl w-full ${
               isArabic ? "text-right" : ""
             }`}
@@ -128,12 +146,17 @@ const Form = () => {
               placeholder={inputPlace("Phone")}
               required
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handleInputChange(setPhone)}
             />
           </div>
         </div>
       </div>
 
+      {success && (
+        <div className="text-green-500 text-center ">
+          Successfully submitted!
+        </div>
+      )}
       <button
         type="submit"
         className="w-full bg-white cursor-pointer text-black hover:bg-white/75 transition-all duration-300 font-semibold py-4 md:text-lg capitalize text-base rounded-xl outline-black"

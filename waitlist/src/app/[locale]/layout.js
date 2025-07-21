@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "./fonts.css";
 import NextIntProvider from "../NextIntProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"], // or ['latin', 'cyrillic'] etc.
@@ -15,5 +16,10 @@ export const metadata = {
 };
 
 export default function LocaleLayout({ children, params }) {
-  return <NextIntProvider params={params}>{children}</NextIntProvider>;
+  return (
+    <NextIntProvider params={params}>
+      {children}
+      <Analytics />
+    </NextIntProvider>
+  );
 }
