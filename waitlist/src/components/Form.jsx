@@ -18,6 +18,7 @@ const Form = () => {
   const formLabel = useTranslations("FormInput");
   const formBtn = useTranslations("FormBtn");
   const inputPlace = useTranslations("FormPlaceholder");
+  const FormMsg = useTranslations("FormConfrmMsg");
 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,7 +26,6 @@ const Form = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,9 +39,11 @@ const Form = () => {
       return;
     }
 
+    const fullPhone = `${countryCode}${phone}`;
+
     const { error } = await supabase
       .from("waiting_list")
-      .insert({ email, phone });
+      .insert({ email,  fullPhone });
 
     if (error) {
       setError(error.message);
@@ -49,9 +51,8 @@ const Form = () => {
       return;
     }
     // Combine country code and phone number
-    const fullPhone = `${countryCode}${phone}`;
-    setPhone(fullPhone);
 
+    console.log(fullPhone);
     // Success message
     setSuccess(true);
     setError("");
@@ -90,6 +91,7 @@ const Form = () => {
             <span className="text-red-500">*</span>
           </label>
           <input
+            id="email"
             type="email"
             placeholder={inputPlace("Email")}
             value={email}
@@ -103,7 +105,7 @@ const Form = () => {
 
         <div className="flex flex-col gap-2 items-start">
           <label
-            htmlFor="email"
+            htmlFor="phone"
             className={`text-white flex gap-2 font-semibold md:text-base text-sm ${
               isArabic ? "flex-row-reverse self-end" : ""
             }`}
@@ -153,9 +155,7 @@ const Form = () => {
       </div>
 
       {success && (
-        <div className="text-green-500 text-center ">
-          Successfully submitted!
-        </div>
+        <div className="text-green-500 text-center ">{FormMsg("msg")}</div>
       )}
       <button
         type="submit"
@@ -163,7 +163,6 @@ const Form = () => {
       >
         {formBtn("title")}
       </button>
-      {console.log(phone)}
     </form>
   );
 };

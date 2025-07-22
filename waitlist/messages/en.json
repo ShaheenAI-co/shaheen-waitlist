@@ -1,6 +1,6 @@
 {
-  "Logo":{
-    "name":"Shaheen AI"
+  "Logo": {
+    "name": "Shaheen AI"
   },
   "Heading": {
     "title": "Say goodbye to social media Stress ",
@@ -16,11 +16,14 @@
     "Email": "Email Address",
     "Phone": "Phone No"
   },
-  "FormPlaceholder" : {
-    "Email" : " you@gmail.com",
-    "Phone" : "Enter Phone number"
+  "FormPlaceholder": {
+    "Email": " you@gmail.com",
+    "Phone": "Enter Phone number"
   },
   "FormBtn": {
     "title": "Join the waitlist"
+  },
+  "FormConfrmMsg": {
+    "msg": "Thank you for Joining , We will notify you when we launch "
   }
 }
