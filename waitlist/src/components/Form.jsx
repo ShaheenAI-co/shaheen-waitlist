@@ -43,7 +43,7 @@ const Form = () => {
 
     const { error } = await supabase
       .from("waiting_list")
-      .insert({ email,  fullPhone });
+      .insert({ email, phone: fullPhone });
 
     if (error) {
       setError(error.message);
