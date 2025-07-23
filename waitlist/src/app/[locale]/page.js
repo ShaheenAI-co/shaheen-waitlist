@@ -12,7 +12,7 @@ export default function Home() {
 
       <Header />
       <main className="flex-1 flex items-center z-10 justify-center px-6 ">
-        <div className=" mx-auto text-center">
+        <div className=" flex flex-col gap-8 text-center">
           <MainHead />
           <FormCard />
         </div>

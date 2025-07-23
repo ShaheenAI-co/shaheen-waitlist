@@ -13,12 +13,12 @@
   },
 
   "FormInput": {
-    "Email": "الإيميل",
+    "Email": " بريدك الالكتروني",
     "Phone": "رقم الجوال"
   },
   "FormPlaceholder" : {
-    "Email" : " بريدك الالكتروني",
-    "Phone" : "رقم الجوال"
+    "Email" : "  you@gmail.com",
+    "Phone" : " ادخل رقم الجوال  "
   }
   ,
   "FormBtn": {
