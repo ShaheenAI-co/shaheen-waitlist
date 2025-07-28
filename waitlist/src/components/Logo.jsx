@@ -14,7 +14,13 @@ const Logo = () => {
         isArabic ? "flex-row-reverse alexandria-font" : ""
       } `}
     >
-      <Image src="/Logo/logo-light.png" alt="Logo" width={25} height={25} className="max-sm:w-4 max-sm:h-6" />
+      <Image
+        src="/Logo/logo-light.png"
+        alt="Logo"
+        width={25}
+        height={25}
+        className="max-sm:w-4 max-sm:h-6"
+      />
       <h1
         className={`text-white md:text-xl  text-sm satoshi-bold ${isArabic ? "hidden" : ""} `}
       >

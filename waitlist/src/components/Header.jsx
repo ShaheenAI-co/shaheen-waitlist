@@ -10,7 +10,7 @@ const Header = () => {
   const isArabic = locale === "ar";
   return (
     <div
-      className={`w-full z-10 flex p-4 md:px-6 md:py-4 justify-between items-center ${
+      className={`w-full z-10 flex p-4 md:px-8 md:py-4 justify-between items-center ${
         isArabic ? "flex-row-reverse" : ""
       }`}
     >

@@ -83,13 +83,46 @@ body {
 /* Alexandria font import */
 @font-face {
   font-family: "Alexandria";
-  src: url("/fonts/Alexandria.woff") format("woff");
-  font-weight: normal;
+  src: url("/fonts/Alexandria-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 .alexandria-font {
-  font-family: "Alexandria", sans-serif;
+  font-family: "Alexandria", "Arial", "Helvetica", sans-serif;
   font-weight: 400;
+}
+
+/* Safari-specific select styling fixes */
+/* select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+} */
+
+/* select::-ms-expand {
+  display: none;
+} */
+
+/* select option {
+  background-color: #4c1d95 !important;
+  color: white !important;
+  padding: 8px;
+} */
+
+/* Ensure dropdown arrow is hidden in all browsers */
+/* select {
+  background-image: none !important;
+} */
+
+/* Custom select styling for Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select {
+    -webkit-appearance: none;
+    background-image: none !important;
+  }
 }
